@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoCloud Mining | Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div id="auth-section" class="w-full max-w-md p-8 rounded-3xl glass-card shadow-2xl">
+        <div class="text-center mb-10">
+            <div class="inline-block p-4 rounded-2xl bg-blue-600/20 mb-4">
+                <i class="fas fa-server text-blue-500 text-4xl"></i>
+            </div>
+            <h1 class="text-3xl font-extrabold tracking-tight">Mining Farm</h1>
+            <p class="text-slate-400 mt-2">Մուտք գործեք համակարգ</p>
+        </div>
+        
+        <div class="space-y-4">
+            <input type="email" id="email" placeholder="Էլ. հասցե" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 focus:border-blue-500 focus:outline-none transition">
+            <input type="password" id="password" placeholder="Գաղտնաբառ" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 focus:border-blue-500 focus:outline-none transition">
+            <button onclick="handleAuth('login')" class="w-full bg-blue-600 hover:bg-blue-700 py-4 rounded-xl font-bold transition transform active:scale-95">Մուտք</button>
+            
+        </div>
+    </div>
+
+    <div id="mining-section" class="hidden w-full max-w-5xl space-y-6">
+        <div class="flex flex-col md:flex-row justify-between items-center glass-card p-6 rounded-3xl gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg"><i class="fas fa-user-astronaut"></i></div>
+                <div><p class="text-xs text-slate-400">Օգտատեր</p><p id="display-email" class="font-bold text-slate-200"></p></div>
+            </div>
+            <button onclick="logout()" class="px-6 py-2 rounded-xl bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500 hover:text-white transition">Դուրս գալ</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-8 rounded-3xl text-center">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" class="w-16 h-16 btc-glow mx-auto mb-4">
+                <p class="text-slate-400 text-sm">Հաշվեկշիռ</p>
+                <h2 class="text-4xl font-black text-yellow-500" id="balance">0.00000000</h2>
+                <p class="text-xs text-slate-500 mt-2 font-mono">BTC</p>
+            </div>
+
+            <div class="md:col-span-2 glass-card p-8 rounded-3xl relative overflow-hidden">
+                <div class="flex justify-between items-start mb-8">
+                    <div><h3 class="text-2xl font-bold italic">Mining Status</h3><p id="status-text" class="text-slate-400">Սպասում է...</p></div>
+                    <div id="status-indicator" class="w-4 h-4 rounded-full bg-slate-700"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-8 text-center">
+                    <div class="bg-slate-900/50 p-4 rounded-2xl">
+                        <p class="text-xs text-slate-500 uppercase">Hash Rate</p>
+                        <p id="hash-rate" class="text-xl font-bold text-blue-400">0.00 TH/s</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-4 rounded-2xl font-mono">
+                        <p class="text-xs text-slate-500 uppercase">Timer</p>
+                        <p id="timer" class="text-xl font-bold text-green-400">15s</p>
+                    </div>
+                </div>
+                <button id="mine-btn" onclick="toggleMining()" class="w-full py-5 rounded-2xl bg-blue-600 font-black text-xl tracking-widest shadow-xl transition-all hover:scale-[1.01] active:scale-95">START MINING</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js">
+        
+    </script>
+</body>
+</html>
