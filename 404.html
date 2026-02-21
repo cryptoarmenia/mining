@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title>404 | Էջը չի գտնվել</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root{
+      --accent:#7c7cff;
+      --accent2:#00e0a4;
+      --text:#f1f3ff;
+      --muted:#a3accf;
+    }
+
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:radial-gradient(circle at top,#0b0f2a,#05070f 70%);
+      font-family:Inter,Arial,sans-serif;
+      color:var(--text);
+      overflow:hidden;
+    }
+
+    .wrap{
+      text-align:center;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    h1{
+      font-size:120px;
+      margin:0;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:0 0 40px rgba(124,124,255,.6);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    p{
+      font-size:20px;
+      color:var(--muted);
+      margin:20px 0 40px;
+    }
+
+    a{
+      display:inline-block;
+      padding:16px 42px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#000;
+      font-size:18px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      box-shadow:0 20px 60px rgba(124,124,255,.45);
+      transition:.25s;
+    }
+
+    a:hover{
+      transform:translateY(-4px) scale(1.05);
+      box-shadow:0 30px 90px rgba(0,224,164,.55);
+    }
+
+    .bg-orb{
+      position:absolute;
+      width:420px;
+      height:420px;
+      background:radial-gradient(circle,var(--accent2),transparent 70%);
+      filter:blur(120px);
+      animation: orb 12s linear infinite;
+      opacity:.35;
+    }
+
+    .bg-orb.second{
+      background:radial-gradient(circle,var(--accent),transparent 70%);
+      animation-duration:18s;
+      animation-direction:reverse;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-18px)}
+    }
+
+    @keyframes glow{
+      from{text-shadow:0 0 30px rgba(124,124,255,.4)}
+      to{text-shadow:0 0 60px rgba(0,224,164,.8)}
+    }
+
+    @keyframes orb{
+      0%{transform:translate(-50%, -50%) rotate(0deg)}
+      100%{transform:translate(50%, 50%) rotate(360deg)}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orb"></div>
+  <div class="bg-orb second"></div>
+
+  <div class="wrap">
+    <h1>404</h1>
+    <p>Էջը չի գտնվել կամ այլևս գոյություն չունի</p>
+    <a href="/">Վերադառնալ գլխավոր էջ</a>
+  </div>
+
+</body>
+</html>
