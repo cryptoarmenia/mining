@@ -161,7 +161,7 @@
             <div class="glass p-6 rounded-3xl text-center border-purple-500/20 bg-purple-500/5 hover:bg-purple-500/10 transition-all">
                 <p class="text-purple-400 text-[10px] font-bold">VIP</p>
                 <p class="orbitron text-xl font-black my-2">250 USDT</p>
-                <p class="text-purple-400/70 text-[10px] mb-4">0.01 / 10s</p>
+                <p class="text-purple-400/70 text-[10px] mb-4">0.004 / 10s</p>
                 <button onclick="openUpgrade('VIP PLAN (250 USDT)')" class="w-full bg-purple-600 text-white py-2 rounded-xl text-[10px] font-bold orbitron hover:bg-purple-500 transition">BUY</button>
             </div>
         </div>
@@ -323,7 +323,7 @@
                         if (currentRate === 0.0002) pName = "PLAN A (20 USDT)";
                         else if (currentRate === 0.0005) pName = "PLAN B (50 USDT)";
                         else if (currentRate === 0.001) pName = "PLAN C (100 USDT)";
-                        else if (currentRate === 0.01) pName = "VIP PLAN (250 USDT)";
+                        else if (currentRate === 0.004) pName = "VIP PLAN (250 USDT)";
                         
                         document.getElementById('activePlanName').innerText = pName;
                         document.getElementById('refLink').value = `${window.location.origin}${window.location.pathname}?ref=${d.referralCode}`;
@@ -373,4 +373,5 @@
     </script>
 </body>
 </html>
+
 
