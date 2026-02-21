@@ -3,251 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoArmenia | USDT Cloud Mining</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-    
+    <title>Տեխնիկական Աշխատանքներ</title>
     <style>
-        :root { --primary: #00f2ff; --secondary: #0062ff; --dark: #020617; }
-        body { font-family: 'Rajdhani', sans-serif; background: var(--dark); color: white; overflow-x: hidden; }
-        .orbitron { font-family: 'Orbitron', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .neon-text { text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); color: var(--primary); }
-        .neon-btn { background: linear-gradient(90deg, var(--primary), var(--secondary)); box-shadow: 0 0 20px rgba(0, 98, 255, 0.4); }
-        .mining-animate { animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-        #tgModal, #withdrawModal { transition: all 0.3s ease-out; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        .icon {
+            font-size: 60px;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #7f8c8d;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
-<body class="min-h-screen">
+<body>
 
-    <div id="tgModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
-        <div class="glass p-8 rounded-[2.5rem] max-w-sm w-full text-center border-t-2 border-cyan-400">
-            <h2 class="orbitron text-xl font-bold mb-2">ՄԻԱՑԵՔ ՄԵԶ</h2>
-            <p class="text-gray-400 text-sm mb-6">Միացեք մեր Telegram խմբին՝ վերջին նորություններին և վճարումներին հետևելու համար:</p>
-            <a href="https://t.me/your_group_link" target="_blank" class="block w-full neon-btn py-3 rounded-xl font-bold mb-3 text-slate-900 text-center">TELEGRAM GROUP</a>
-            <button onclick="closeModal()" class="text-gray-500 text-xs hover:text-white transition uppercase">Փակել</button>
-        </div>
+    <div class="container">
+        <div class="icon">🛠️</div>
+        <h1>Տեխնիկական Աշխատանքներ</h1>
+        <p>Կայքը ժամանակավորապես անհասանելի է: Մենք կատարում ենք պլանային թարմացումներ՝ ձեզ ավելի լավ ծառայելու համար:</p>
+        <div class="loader"></div>
+        <p>Շնորհակալություն համբերության համար:</p>
     </div>
 
-    <div id="withdrawModal" class="hidden fixed inset-0 z-[110] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
-        <div class="glass p-8 rounded-[2.5rem] max-w-sm w-full border-t-2 border-orange-500 text-center">
-            <h2 class="orbitron text-xl font-bold mb-4 text-orange-400">WITHDRAW USDT</h2>
-            <p class="text-gray-400 text-[10px] mb-6 uppercase tracking-widest">Network: TRC-20 (Tron)</p>
-            <input id="walletAddress" type="text" placeholder="Մուտքագրեք TRC-20 հասցեն" class="w-full bg-black/40 p-4 rounded-xl border border-white/10 focus:border-orange-500 outline-none text-xs mb-4 text-center">
-            <button onclick="submitWithdraw()" class="w-full bg-orange-600 hover:bg-orange-500 py-4 rounded-xl font-bold orbitron transition text-black">CONFIRM PAYOUT</button>
-            <button onclick="closeWithdraw()" class="text-gray-500 text-[10px] mt-4 uppercase">Չեղարկել</button>
-        </div>
-    </div>
-
-    <div id="authSection" class="min-h-screen flex items-center justify-center p-4">
-        <div class="glass p-10 rounded-[2.5rem] w-full max-w-md shadow-2xl">
-            <div class="text-center mb-10">
-                <h1 class="orbitron text-4xl font-black neon-text tracking-tighter">CryptoARM</h1>
-                <p class="text-gray-500 text-xs mt-2 uppercase">CryptoArmenia Mining</p>
-            </div>
-            <div class="space-y-4">
-                <input id="email" type="email" placeholder="Էլ. հասցե" class="w-full bg-white/5 p-4 rounded-2xl border border-white/10 outline-none focus:border-cyan-500">
-                <input id="pass" type="password" placeholder="Գաղտնաբառ" class="w-full bg-white/5 p-4 rounded-2xl border border-white/10 outline-none focus:border-cyan-500">
-                <button onclick="handleLogin()" class="w-full neon-btn p-4 rounded-2xl font-bold orbitron text-dark transition">LOGIN</button>
-                <button onclick="handleRegister()" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl font-bold orbitron hover:bg-white/10">REGISTER</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="mainSection" class="hidden max-w-6xl mx-auto p-4 py-10 space-y-6">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="lg:col-span-2 space-y-6">
-                <div class="glass p-10 rounded-[3rem] relative shadow-2xl">
-                    <div class="flex justify-between items-start mb-10">
-                        <div>
-                            <span class="text-cyan-400 text-[10px] font-bold tracking-widest uppercase">Mining Balance</span>
-                            <h2 class="orbitron text-6xl font-black mt-4 tracking-tighter"><span id="balance">0.0000</span> <span class="text-2xl text-cyan-500">USDT</span></h2>
-                        </div>
-                        <div id="miningStatus" class="text-xs font-bold text-gray-500">OFFLINE</div>
-                    </div>
-                    <div class="h-3 bg-black/40 rounded-full overflow-hidden mb-10">
-                        <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-400 to-blue-600 w-0"></div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button id="mineBtn" onclick="toggleMining()" class="neon-btn p-6 rounded-2xl font-black orbitron text-dark">START ENGINE</button>
-                        <button onclick="openWithdraw()" class="glass p-6 rounded-2xl font-bold orbitron border border-white/10 hover:bg-white/5">WITHDRAW</button>
-                    </div>
-                </div>
-
-                <div class="glass p-8 rounded-3xl flex flex-col md:flex-row items-center gap-6 border-l-4 border-cyan-500">
-                    <div class="flex-1">
-                        <h3 class="orbitron text-sm font-bold">AFFILIATE PROGRAM</h3>
-                        <p class="text-gray-500 text-xs">Share your link and get +0.1 USDT per user.</p>
-                    </div>
-                    <div class="flex bg-black/40 p-2 rounded-xl border border-white/10">
-                        <input id="refLink" readonly type="text" class="bg-transparent text-[10px] px-4 outline-none text-cyan-400">
-                        <button onclick="copyRef()" class="bg-cyan-500 text-black px-4 py-2 rounded-lg font-bold text-xs">COPY</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass rounded-[3rem] p-8 flex flex-col h-[600px]">
-                <h3 class="orbitron font-bold text-cyan-400 mb-6">ACTIVITY FEED</h3>
-                <div id="notifList" class="flex-1 overflow-y-auto space-y-3 pr-2 scrollbar-hide text-xs text-gray-500">
-                    </div>
-                <button onclick="handleLogout()" class="mt-6 text-[10px] text-red-500 hover:text-red-400 font-bold uppercase tracking-widest">Sign Out</button>
-            </div>
-        </div>
-    </div>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, updateDoc, increment, collection, query, where, onSnapshot, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-        // --- FIREBASE CONFIG (Տեղադրիր քո տվյալները այստեղ) ---
-       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAV_if7XCjF4IViBp5wUrH9N1MZP0pEpuY",
-  authDomain: "vip-club-1d7aa.firebaseapp.com",
-  projectId: "vip-club-1d7aa",
-  storageBucket: "vip-club-1d7aa.firebasestorage.app",
-  messagingSenderId: "875199846449",
-  appId: "1:875199846449:web:d963cc881d9bb8dc211d10",
-  measurementId: "G-RLXV8D5QQ1"
-};
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        let currentUser = null;
-        let miningInterval = null;
-
-        // --- AUTH FUNCTIONS ---
-        window.handleRegister = async () => {
-            const email = document.getElementById('email').value;
-            const pass = document.getElementById('pass').value;
-            const refBy = new URLSearchParams(window.location.search).get('ref');
-            try {
-                const cred = await createUserWithEmailAndPassword(auth, email, pass);
-                const myRefCode = Math.random().toString(36).substring(2, 8).toUpperCase();
-                await setDoc(doc(db, "users", cred.user.uid), {
-                    email, balance: 0, referralCode: myRefCode, referredBy: refBy || null, createdAt: new Date()
-                });
-                if (refBy) {
-                    const q = query(collection(db, "users"), where("referralCode", "==", refBy));
-                    const snap = await getDocs(q);
-                    if (!snap.empty) await updateDoc(doc(db, "users", snap.docs[0].id), { balance: increment(0.1) });
-                }
-            } catch (e) { alert(e.message); }
-        };
-
-        window.handleLogin = async () => {
-            try { await signInWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('pass').value); } 
-            catch (e) { alert(e.message); }
-        };
-
-        window.handleLogout = () => { if(miningInterval) clearInterval(miningInterval); signOut(auth); };
-
-        // --- MINING SYSTEM ---
-        window.toggleMining = () => {
-            const btn = document.getElementById('mineBtn');
-            const status = document.getElementById('miningStatus');
-            const bar = document.getElementById('progressBar');
-
-            if (miningInterval) {
-                clearInterval(miningInterval); miningInterval = null;
-                btn.innerText = "START ENGINE"; status.innerText = "OFFLINE";
-                status.classList.remove('neon-text', 'mining-animate'); bar.style.width = "0%";
-            } else {
-                btn.innerText = "STOP ENGINE"; status.innerText = "CORE ACTIVE";
-                status.classList.add('neon-text', 'mining-animate');
-                miningInterval = setInterval(runCycle, 10000);
-                runCycle();
-            }
-        };
-
-        async function runCycle() {
-            if (!miningInterval || !currentUser) return;
-            const bar = document.getElementById('progressBar');
-            bar.style.transition = "none"; bar.style.width = "0%";
-            setTimeout(() => { if(miningInterval) { bar.style.transition = "width 10s linear"; bar.style.width = "100%"; } }, 50);
-            setTimeout(async () => { if(currentUser && miningInterval) await updateDoc(doc(db, "users", currentUser.uid), { balance: increment(0.0001) }); }, 10000);
-        }
-
-        // --- WITHDRAW SYSTEM ---
-        window.openWithdraw = () => {
-            const bal = parseFloat(document.getElementById('balance').innerText);
-            if (bal < 10) return alert("Մինիմալ հանումը 10 USDT է:");
-            document.getElementById('withdrawModal').classList.remove('hidden');
-        };
-
-        window.closeWithdraw = () => document.getElementById('withdrawModal').classList.add('hidden');
-
-        window.submitWithdraw = async () => {
-            const address = document.getElementById('walletAddress').value;
-            const bal = parseFloat(document.getElementById('balance').innerText);
-            if (address.length < 30) return alert("Մուտքագրեք ճիշտ TRC-20 հասցե:");
-            try {
-                await addDoc(collection(db, "withdrawals"), {
-                    uid: currentUser.uid, amount: bal, wallet: address, status: "pending", date: new Date()
-                });
-                await updateDoc(doc(db, "users", currentUser.uid), { balance: 0 });
-                alert("Հայտը ուղարկված է:");
-                closeWithdraw();
-            } catch (e) { alert(e.message); }
-        };
-
-        // --- REALTIME UI SYNC ---
-        window.closeModal = () => document.getElementById('tgModal').classList.add('hidden');
-
-        onAuthStateChanged(auth, (user) => {
-            currentUser = user;
-            if (user) {
-                document.getElementById('tgModal').classList.remove('hidden');
-                onSnapshot(doc(db, "users", user.uid), (snap) => {
-                    if (snap.exists()) {
-                        const d = snap.data();
-                        document.getElementById('balance').innerText = d.balance.toFixed(4);
-                        document.getElementById('refLink').value = `${window.location.origin}${window.location.pathname}?ref=${d.referralCode}`;
-                        syncHistory(d.referralCode);
-                    }
-                });
-                document.getElementById('authSection').classList.add('hidden');
-                document.getElementById('mainSection').classList.remove('hidden');
-            } else {
-                document.getElementById('authSection').classList.remove('hidden');
-                document.getElementById('mainSection').classList.add('hidden');
-            }
-        });
-
-        function syncHistory(refCode) {
-            const list = document.getElementById('notifList');
-            // Referral Sync
-            const qRef = query(collection(db, "users"), where("referredBy", "==", refCode));
-            onSnapshot(qRef, (snap) => {
-                snap.docChanges().forEach(change => {
-                    if (change.type === "added") {
-                        const d = change.doc.data();
-                        const el = document.createElement('div');
-                        el.className = "bg-cyan-500/10 p-3 rounded-xl border-l-2 border-cyan-500 mb-2";
-                        el.innerHTML = `<div class="flex justify-between"><span>New Referral</span><span class="text-cyan-400">+0.10</span></div>`;
-                        list.prepend(el);
-                    }
-                });
-            });
-            // Withdraw Sync
-            const qWith = query(collection(db, "withdrawals"), where("uid", "==", currentUser.uid));
-            onSnapshot(qWith, (snap) => {
-                snap.docChanges().forEach(change => {
-                    const d = change.doc.data();
-                    const el = document.createElement('div');
-                    const color = d.status === 'confirmed' ? 'border-green-500 text-green-500' : 'border-orange-500 text-orange-500';
-                    el.className = `bg-white/5 p-3 rounded-xl border-l-2 ${color} mb-2`;
-                    el.innerHTML = `<div class="flex justify-between"><span>Payout Request</span><span class="uppercase">${d.status}</span></div><div class="text-[9px] mt-1">${d.amount} USDT</div>`;
-                    list.prepend(el);
-                });
-            });
-        }
-
-        window.copyRef = () => { navigator.clipboard.writeText(document.getElementById('refLink').value); alert("Հղումը պատճենվեց:"); };
-    </script>
 </body>
 </html>
