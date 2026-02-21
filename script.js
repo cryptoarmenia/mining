@@ -65,7 +65,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
             const bar = document.getElementById('progressBar');
             bar.style.transition = "none"; bar.style.width = "0%";
             setTimeout(() => { if(miningInterval) { bar.style.transition = "width 10s linear"; bar.style.width = "100%"; } }, 50);
-            setTimeout(async () => { if(currentUser && miningInterval) await updateDoc(doc(db, "users", currentUser.uid), { balance: increment(0.001) }); }, 10000);
+            setTimeout(async () => { if(currentUser && miningInterval) await updateDoc(doc(db, "users", currentUser.uid), { balance: increment(0.0001) }); }, 10000);
         }
 
         // --- UI & MODAL ---
@@ -107,3 +107,4 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 
         window.copyRef = () => { navigator.clipboard.writeText(document.getElementById('refLink').value); alert("Հղումը պատճենվեց:"); };
    
+
