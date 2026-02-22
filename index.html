@@ -164,6 +164,12 @@
                 <p class="text-purple-400/70 text-[10px] mb-4">0.004 / 10s</p>
                 <button onclick="openUpgrade('VIP PLAN (250 USDT)')" class="w-full bg-purple-600 text-white py-2 rounded-xl text-[10px] font-bold orbitron hover:bg-purple-500 transition">BUY</button>
             </div>
+                <div class="glass p-6 rounded-3xl text-center border-amber-500/20 bg-amber-500/5 hover:bg-amber-500/10 transition-all group">
+                <p class="text-amber-500 text-[10px] font-bold uppercase tracking-widest">Master Plan</p>
+                <p class="orbitron text-xl font-black my-2">900 USDT</p>
+              <p class="text-amber-400/70 text-[10px] mb-4">0.01 / 10s</p>
+                <button onclick="openUpgrade('MASTER PLAN (900 USDT)')" class="w-full bg-amber-600 text-white py-2 rounded-xl text-[10px] font-bold orbitron hover:bg-amber-500 transition shadow-lg shadow-amber-500/20">BUY MASTER</button>
+</div>
         </div>
     </div>
 
@@ -324,7 +330,7 @@
                         else if (currentRate === 0.0005) pName = "PLAN B (50 USDT)";
                         else if (currentRate === 0.001) pName = "PLAN C (100 USDT)";
                         else if (currentRate === 0.004) pName = "VIP PLAN (250 USDT)";
-                        
+                        else if (currentRate === 0.01) pName = "MASTER PLAN (900 USDT)";
                         document.getElementById('activePlanName').innerText = pName;
                         document.getElementById('refLink').value = `${window.location.origin}${window.location.pathname}?ref=${d.referralCode}`;
                         syncActivity(d.referralCode);
@@ -373,5 +379,6 @@
     </script>
 </body>
 </html>
+
 
 
